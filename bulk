@@ -1,0 +1,27 @@
+#Via netwerkschijf (lukt voorlopig niet)
+
+@echo off
+set input_dir="R:\Collectie HVA\WERKMAP\BEELDAANVRAGEN\BA2024\WINTERCIRCUS\FILM_circus_Huis van Alijn"
+set logo_path="R:\Collectie HVA\WERKMAP\BEELDAANVRAGEN\BA2024\WINTERCIRCUS\logo\watermerk_HVA.png"
+set output_dir="R:\Collectie HVA\WERKMAP\BEELDAANVRAGEN\BA2024\WINTERCIRCUS\FILM_circus_Huis van Alijn\output"
+
+mkdir "%output_dir%"
+
+for %%f in ("%input_dir%\*.mov") do (
+    ffmpeg -i "%%f" -i %logo_path% -filter_complex "[1:v]scale=iw/30:-1[logo];[logo]format=yuva420p,colorchannelmixer=aa=0.5[transparent_logo];[0:v][transparent_logo]overlay=W-w-20:20" "%output_dir%\%%~nf_output.mov"
+)
+pause
+
+#Via eigen pc (lukt wel)
+
+@echo off
+set input_dir="C:\Video"
+set logo_path="C:\Video\logo\watermerk_HVA.png"
+set output_dir="C:\Video\output"
+
+mkdir "%output_dir%"
+
+for %%f in ("%input_dir%\*.mov") do (
+    ffmpeg -i "%%f" -i %logo_path% -filter_complex "[1:v]scale=iw/30:-1[logo];[logo]format=yuva420p,colorchannelmixer=aa=0.5[transparent_logo];[0:v][transparent_logo]overlay=W-w-20:20" "%output_dir%\%%~nf_output.mov"
+)
+pause
