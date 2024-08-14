@@ -1,0 +1,4 @@
+ffmpeg -i "R:\Collectie HVA\WERKMAP\BEELDAANVRAGEN\BA2024\WINTERCIRCUS\FILM_circus_Huis van Alijn\F00254.mov" 
+-i "R:\Collectie HVA\WERKMAP\BEELDAANVRAGEN\BA2024\WINTERCIRCUS\logo\watermerk_HVA.png" 
+-filter_complex "[1:v]scale=iw/30:-1[logo];[logo]format=yuva420p,colorchannelmixer=aa=0.5[transparent_logo];[0:v][transparent_logo]overlay=W-w-20:20" 
+"R:\Collectie HVA\WERKMAP\BEELDAANVRAGEN\BA2024\WINTERCIRCUS\FILM_circus_Huis van Alijn\F00254_output.mov"
